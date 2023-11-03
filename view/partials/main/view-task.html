@@ -50,7 +50,8 @@
                                             </li>
                 
                                             <li>
-                                                <span>Task Link: </span>  <span class="cyan-text" style="cursor: pointer" ng-click="showProofArea()"><a href="{{task.link}}" target="_blank"> {{task.link}}</a></span>
+                                                <span>Task Link: </span>  <span ng-if="!userHasDoneTask" class="cyan-text" style="cursor: pointer" ng-click="showProofArea()"><a href="{{task.link}}" target="_blank"> {{task.link}}</a></span>
+                                                <span ng-if="userHasDoneTask" class="red-text"> You have done this task already</span>
                                             </li>
                                         </ul>
                                     </div>

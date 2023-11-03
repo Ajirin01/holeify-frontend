@@ -49,6 +49,7 @@ controllers.taskType.add = function($scope, $http, $timeout, CONFIG){
                 console.log(response.data);
                 // $scope.categories.push(response.data)
                 M.toast({html: "Task type successfully created!"})
+                window.location = '#!task-types'
             }, function(error) {
                 // Error callback
                 console.error(error);

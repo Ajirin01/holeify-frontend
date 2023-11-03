@@ -1,5 +1,5 @@
 const taskViewController = function ($scope, $stateParams, $rootScope, $http, authService, CONFIG){
-    $scope.page_title = "Tasks"
+    $rootScope.page_title = "Manage Tasks"
     console.log($stateParams.task_id)
     // console.log(authService.user())
     
@@ -56,11 +56,29 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
         $scope.$watch('tasks', function(newValue, oldValue) {
             if (newValue !== oldValue) {
                 // console.log('The value of myHiddenInput has changed:', newValue);
-                $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+                
+                $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id, task_id: $stateParams.task_id}, config).
+                then(response=> {
+                    $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+
+                    let submitted_tasks = response.data
+                    $scope.userHasDoneTask = true ? submitted_tasks.length > 0 : false
+                    // console.log(submitted_tasks.length)
+                })
             }
         });
     }else{
-        $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+        
+
+        $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id, task_id: $stateParams.task_id}, config).
+        then(response=> {
+            $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+
+
+            let submitted_tasks = response.data
+            $scope.userHasDoneTask = true ? submitted_tasks.length > 0 : false
+            console.log(submitted_tasks.length)
+        })
     }
 
     

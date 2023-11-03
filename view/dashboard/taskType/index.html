@@ -1,42 +1,44 @@
 <dashboard-header></dashboard-header>
 <!-- <div ng-include="'view/partials/dashboard/add-taskType.html'"></div> -->
 
-<div class="row">
-    <div>
-        <h5 class="left">Manage Task Types</h5>
+<div class="container">
+  <div class="row">
+      <div>
+          <h5 class="left">Manage Task Types</h5>
 
-        <a ui-sref="add-taskType" class="waves-effect waves-circle waves-light btn-floating secondary-content right">
-            <i class="material-icons">add</i>
-        </a>
-    </div>
+          <a ui-sref="add-taskType" class="waves-effect waves-circle waves-light btn-floating secondary-content right">
+              <i class="material-icons">add</i>
+          </a>
+      </div>
 
-    <div>
-      <input ng-model="taskTypeTitle" id="search" class="form-control" placeholder="Filter text">
-        <table class="responsive-table">
-            <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Action</th>
-              </tr>
-            </thead>
-    
-            <tbody>
-              <tr dir-paginate="taskType in taskTypes | filter : taskTypeTitle | itemsPerPage: pageSize"
-                  pagination-id="flights">
-                    <td>{{taskType.title}}</td>
-                    <td>{{taskType.category.name}}</td>
-                    <td>
-                        <a href="#!edit-taskType/{{taskType.id}}" class="orange-text"><i class="material-icons">edit</i></a>
-                        <a ng-if="taskType.name !== 'Custom Task'" href="" class="red-text" ng-click="deleteCategory(taskType.id)"><i class="material-icons">delete</i></a>
-                    </td>
+      <div>
+        <input ng-model="taskTypeTitle" id="search" class="form-control" placeholder="Filter text">
+          <table class="responsive-table">
+              <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Action</th>
                 </tr>
-            </tbody>
-          </table>
-          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
-    </div>
+              </thead>
+      
+              <tbody>
+                <tr dir-paginate="taskType in taskTypes | filter : taskTypeTitle | itemsPerPage: pageSize"
+                    pagination-id="flights">
+                      <td>{{taskType.title}}</td>
+                      <td>{{taskType.category.name}}</td>
+                      <td>
+                          <a href="#!edit-taskType/{{taskType.id}}" class="orange-text"><i class="material-icons">edit</i></a>
+                          <a ng-if="taskType.name !== 'Custom Task'" href="" class="red-text" ng-click="deleteCategory(taskType.id)"><i class="material-icons">delete</i></a>
+                      </td>
+                  </tr>
+              </tbody>
+            </table>
+            <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+      </div>
 
 
+  </div>
 </div>
 
 <dashboard-footer></dashboard-footer>

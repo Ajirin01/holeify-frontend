@@ -63,7 +63,7 @@ controllers.taskType.edit = function($scope, $http, CONFIG, $stateParams, $timeo
                 console.log(response.data);
                 $scope.task_type = response.data
                 M.toast({html: "TaskType successfully updated!"})
-                $state.go('task-types')
+                window.location = '#!task-types'
             }, function(error) {
                 // Error callback
                 console.error(error);
