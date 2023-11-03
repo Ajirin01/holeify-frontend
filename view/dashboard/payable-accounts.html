@@ -1,0 +1,80 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-payableAccount.html'"></div> -->
+
+<div class="row">
+    <div>
+        <h5 class="left">Manage Payouts</h5>
+    </div>
+
+    <div>
+      <input ng-model="payableAccountTitle" id="search" class="form-control" placeholder="Filter text">
+        <table class="responsive-table">
+            <thead>
+              <tr>
+                  <th>Select all 
+                    <input type="checkbox" id="selectAll" ng-model="selectAllTasks" ng-change="toggleCheckAll()">
+                      <ul id="select-dropdown" class="dropdown-content">
+                          <li><a href="#!" ng-click="updateStatus('paid')">paid</a></li>
+
+                          <li class="divider"></li>
+                          <li><a href="#!" ng-click="updateStatus('processing')">processing</a></li>
+
+                          <li class="divider"></li>
+                          <li><a href="#!" ng-click="updateStatus('pending')">pending</a></li>
+
+                          <li class="divider"></li>
+                          <li><a href="#!" ng-click="processPayout()">process payout</a></li>
+                      </ul>
+                      <a href="#!" data-target="select-dropdown" class="dropdown-trigger btn waves-effect waves-light">Select Action</a>
+                      <!-- <i class="material-icons">settings</i> -->
+                  </th>
+                  <th>Worker Name</th>
+                  <th>Payout Amount</th>
+                  <th>Account Number</th>
+                  <th>Bank Name</th>
+                  <th>Status</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr dir-paginate="payableAccount in payableAccounts | filter : payableAccountTitle | itemsPerPage: pageSize"
+                  pagination-id="flights">
+                  <!-- {{payableAccount}} -->
+                    <input type="hidden" id="worker-id{{payableAccount.id}}" value="{{payableAccount.worker.id}}" name="worker_id">
+                    <td><input type="checkbox" class="checkbox" id="check{{payableAccount.id}}" value="{{payableAccount.id}}"></td>
+                    <td>{{payableAccount.worker.user.name}}</td>
+                    <td>{{payableAccount.amount}}</td>
+                    <!-- <td><a href="photo-proof.php?url={{payableAccount.prove_photo}}"><img src="{{payableAccount.prove_photo}}" alt="" srcset="" style="max-width: 100px; max-height: 100px"></a></td> -->
+                    <td>{{payableAccount.worker.account_number}}</td>
+                    <td>{{payableAccount.worker.bank_name}}</td>
+                    <td>{{payableAccount.status}}</td>
+                </tr>
+            </tbody>
+          </table>
+          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <button class="btn" ng-click="updatePayouts()">Update Payouts</button>
+    </div>
+</div>
+
+<style>
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.5) translateY(3px);
+}
+</style>
+
+<dashboard-footer></dashboard-footer>
+
+<script>
+  // Initialize Materialize components
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+
+  
+</script>

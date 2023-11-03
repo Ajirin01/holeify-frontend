@@ -1,0 +1,79 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-submittedTask.html'"></div> -->
+
+<div class="row">
+    <div>
+        <h5 class="left">Manage Submitted Tasks</h5>
+    </div>
+
+    <div>
+      <input ng-model="submittedTaskTitle" id="search" class="form-control" placeholder="Filter text">
+        <table class="responsive-table">
+            <thead>
+              <tr>
+                  <th>Select all 
+                    <input type="checkbox" id="selectAll" ng-model="selectAllTasks" ng-change="toggleCheckAll()">
+                      <ul id="select-dropdown" class="dropdown-content">
+                          <li><a href="#!" ng-click="updateStatus('approved')">approve</a></li>
+
+                          <li class="divider"></li>
+                          <li><a href="#!" ng-click="updateStatus('declined')">decline</a></li>
+                      </ul>
+                      <a href="#!" data-target="select-dropdown" class="dropdown-trigger btn waves-effect waves-light">Select Action</a>
+                      <!-- <i class="material-icons">settings</i> -->
+                  </th>
+                  <th>Name</th>
+                  <th>Reward</th>
+                  <th>Proof</th>
+                  <th>Status</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr dir-paginate="submittedTask in submittedTasks | filter : submittedTaskTitle | itemsPerPage: pageSize"
+                  pagination-id="flights">
+                  <!-- {{submittedTask}} -->
+                    <td><input type="checkbox" class="checkbox" id="check{{submittedTask.id}}" value="{{submittedTask.id}}"></td>
+                    <td>{{submittedTask.task.title}}</td>
+                    <td>{{submittedTask.reward}}</td>
+                    <!-- <td><a href="photo-proof.php?url={{submittedTask.prove_photo}}"><img src="{{submittedTask.prove_photo}}" alt="" srcset="" style="max-width: 100px; max-height: 100px"></a></td> -->
+                    <td>
+                      <img class="modal-trigger" data-target="imageModal{{submittedTask.id}}" src="{{submittedTask.prove_photo}}" ng-click="openModal(submittedTask.id, submittedTask.task.title, submittedTask.prove_photo)" alt="" style="max-width: 100px; max-height: 100px">
+                    </td>
+                    <td>{{submittedTask.status}}</td>
+                </tr>
+            </tbody>
+          </table>
+          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+    </div>
+
+    <div id="imageModal{{task_id}}" class="modal">
+      <div class="modal-content">
+        <h4 id="submittedTask-task-title">{{task_title}}</h4>
+        <img id="submittedTask-prove-photo" src="{{photo_proof}}" alt="" style="max-width: 100%;">
+      </div>
+      <div class="modal-footer">
+        <button class="modal-close waves-effect waves-green btn-flat">Close</button>
+      </div>
+    </div>
+</div>
+
+<style>
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.5) translateY(3px);
+}
+</style>
+
+<dashboard-footer></dashboard-footer>
+
+<script>
+  // Initialize Materialize components
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+
+  
+</script>

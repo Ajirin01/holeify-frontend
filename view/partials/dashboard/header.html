@@ -1,0 +1,59 @@
+<div class="row remove-row-margin">
+
+    <sidebar-nav></sidebar-nav>
+
+    <div class="col s12">
+        <div class="row remove-row-margin">
+            <div class="col s12">
+                <div class="row" style="padding-top: 10px">
+                    <div class="col s1 center-align">
+                        <a href="#!" data-target="slide-out" class="sidenav-trigger tooltipped" data-position="bottom" data-tooltip="Click to toggle menu"><i class="material-icons">menu</i></a>
+                    </div>
+                    <div class="col s2 center-align" style="height: 30px; border-right: 1px rgb(201, 199, 199) solid; border-left: 1px rgb(201, 199, 199) solid">
+                        <a ui-sref="home" style="cursor: pointer;"><b class="black-text">Holeify.<small>com</small> </b> </a> 
+                    </div>
+                    <div class="col s4" style="height: 30px; border-right: 1px rgb(201, 199, 199) solid">
+                            <!-- <div class="row remove-row-margin center-left">
+                                <div class="col s2">
+                                    <i class="material-icons">account_circle</i>
+                                </div>
+
+                                <div class="col s8">
+                                    <input id="" type="text">
+                                </div>
+                            </div> -->
+                    </div>
+                    <div class="col s4 right-align" style="height: 30px; border-right: 1px rgb(201, 199, 199) solid">
+                            <span class="right"> <i class="material-icons">person_pin</i></span>
+                            <span class="right">Hi, <b>{{auth.user().name | firstName}}</b></span> 
+
+                    </div>
+                    <div class="col s1 center-align" style="height: 30px">
+                        <ul id="dropdown1" class="dropdown-content">
+                            <li><a ui-sref="profile">Profile settings</a></li>
+
+                            <li class="divider"></li>
+                            <li><a href="#!" ng-click="auth.logout()">Logout</a></li>
+
+                            <!-- <li class="divider"></li>
+                            <li>
+                                <a href="#!">Switch account</a>
+                                
+                            </li> -->
+                          </ul>
+                          <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right black-text">settings</i></a>
+                        <!-- <i class="material-icons">settings</i> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+<script>
+    $(document).ready(function(){
+        jQuery(".dropdown-trigger").dropdown();
+        // $('.tooltipped').tooltip();
+    })
+</script>

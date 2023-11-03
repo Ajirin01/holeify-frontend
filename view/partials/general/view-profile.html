@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="card hoverable">
+        <div class="container">
+            <div class="row">
+                <div class="row center-align">
+                    <div class="pt-10">
+                        <img class="circle" src="assets/img/credit-bg.png" alt="" srcset="" style="max-width: 150px; height: 150px">
+                    </div>
+                </div>
+                <div class="row">
+                    <h5>My profile</h5>
+                    <form action="">
+                        <div class="row">
+                            <div class="input-field col m6 s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="first_name" type="text" value="{{auth.user().name | firstName}}" class="validate">
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="input-field col m6 s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="last_name" type="text" value="{{auth.user().name | lastName}}" class="validate">
+                                <label for="last_name">Last Name</label>
+                            </div>
+
+                            <div class="input-field col m6 s12">
+                                <i class="material-icons prefix">phone</i>
+                                <input id="phone" type="tel" value="{{auth.user().phone}}" class="validate">
+                                <label for="phone">Telephone</label>
+                            </div>
+                            <div class="input-field col m6 s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" type="email" value="{{auth.user().email}}" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col m12 s12">
+                                <i class="material-icons prefix">visibility</i>
+                                <input id="password" type="password" value="" class="validate">
+                                <label for="email">Password</label>
+                            </div>
+                        </div>
+
+                        <div class="row  center-align">
+                            <button class="btn waves-effect waves-light" type="submit" ng-click="updateProfile()" name="action" style="width: 80%;">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

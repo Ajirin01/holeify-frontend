@@ -1,0 +1,44 @@
+
+<div class="row">
+    <div>
+        <h5 class="left">Manage Tasks</h5>
+
+        <a ui-sref="add-task" class="waves-effect waves-circle waves-light btn-floating secondary-content right">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <div>
+      <input ng-model="taskTitle" id="search" class="form-control" placeholder="Filter text">
+        <table class="responsive-table">
+            <thead>
+              <tr>
+                  <th>Title</th>
+                  <th>Date Posted</th>
+                  <th>Reward</th>
+                  <th>Required</th>
+                  <th>Done</th>
+                  <th>Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr dir-paginate="task in myTasks | filter : taskTitle | itemsPerPage: pageSize"
+                  pagination-id="flights">
+                    <td>{{task.title}}</td>
+                    <td>{{task.created_at | formatDate}}</td>
+                    <td>{{task.reward}}</td>
+                    <td>{{task.total_need}}</td>
+                    <td>{{task.total_done}}</td>
+                    <td>
+                        <a href="" class="orange-text"><i class="material-icons">edit</i></a>
+                        <a href="" class="red-text" ng-click="deleteTask(task.id)"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+    </div>
+
+
+</div>

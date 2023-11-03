@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <meta http-equiv="Content-Type" content="charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>View profile</title> -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Table</title>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <style>
+    body{
+        background-color: rgba(153, 153, 152, 0.041);
+    }
+  </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div>
+                <h5 class="left">Manage Tasks</h5>
+
+                <a href="#!" class="waves-effect waves-circle waves-light btn-floating secondary-content right">
+                    <i class="material-icons">add</i>
+                |</a>
+            </div>
+
+            <div>
+                <table class="responsive-table">
+                    <thead>
+                      <tr>
+                          <th>Title</th>
+                          <th>External Link</th>
+                          <th>Date Submitted</th>
+                          <th>Reward</th>
+                          <th>Prove</th>
+                          <th>Details</th>
+                          <th>Action</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr>
+                        <td>Instagram Like</td>
+                        <td><a href="https://www.instagram.com/ajirinibi" target="_blank">https//www.instagram.com/</a></td>
+                        <td>20/2/2023</td>
+                        <td>$0.87</td>
+                        <td>
+                            <a href="img/credit-bg.png"><img src="img/credit-bg.png" alt="" style="width: 100px; height: 100px;"></a>
+                        </td>
+                        <td>
+                            <p>
+                                I have done it and my instagram hanlde is Ajirinibi
+                            </p>
+                        </td>
+                        <td>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="#!">Pending</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Approved</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Declined</a></li>
+                                
+                            </ul>
+                            <a class="dropdown-trigger" href="#!" data-target="dropdown1" class="orange-text"><i class="material-icons">edit</i></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Instagram Like</td>
+                        <td><a href="https://www.instagram.com/ajirinibi" target="_blank">https//www.instagram.com/</a></td>
+                        <td>20/2/2023</td>
+                        <td>$0.87</td>
+                        <td>
+                            <a href="img/credit-bg.png"><img src="img/credit-bg.png" alt="" style="width: 100px; height: 100px;"></a>
+                        </td>
+                        <td>
+                            <p>
+                                I have done it and my instagram hanlde is Ajirinibi
+                            </p>
+                        </td>
+                        <td>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="#!">Pending</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Approved</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Declined</a></li>
+                                
+                            </ul>
+                            <a class="dropdown-trigger" href="#!" data-target="dropdown1" class="orange-text"><i class="material-icons">edit</i></a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>Instagram Like</td>
+                        <td><a href="https://www.instagram.com/ajirinibi" target="_blank">https//www.instagram.com/</a></td>
+                        <td>20/2/2023</td>
+                        <td>$0.87</td>
+                        <td>
+                            <a href="img/credit-bg.png"><img src="img/credit-bg.png" alt="" style="width: 100px; height: 100px;"></a>
+                        </td>
+                        <td>
+                            <p>
+                                I have done it and my instagram hanlde is Ajirinibi
+                            </p>
+                        </td>
+                        <td>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="#!">Pending</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Approved</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Declined</a></li>
+                                
+                            </ul>
+                            <a class="dropdown-trigger" href="#!" data-target="dropdown1" class="orange-text"><i class="material-icons">edit</i></a>
+                        </td>
+                      </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    $(document).ready(function(){
+        
+        $(".dropdown-trigger").dropdown();
+    })
+  </script>
+  </body>
+</html>

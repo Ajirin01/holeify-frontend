@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>View Tasks | Angular</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  <style>
+    body{
+        background-color: rgba(153, 153, 152, 0.041);
+    }
+  </style>
+</head>
+<body ng-app="myApp">
+    
+    <div class="container" ng-controller="cont">
+        <div class="card hoverable">
+            <div class="container">
+                <div class="row">
+                    <div class="row">
+                        <div ng-include="'tasks-table2.html'"></div>
+                        <h5>My Tasks</h5>
+                        <!-- <form action=""> -->
+                            <div class="row">
+                                <div class="input-field col m6 s12">
+                                    <input ng-model="name" id="icon_prefix" type="text" value="Olagoke" class="validate">
+                                    <label for="icon_prefix">{{name}}</label>
+                                  </div>
+                            </div>
+
+                            <h1>{{name}}<h2>
+                            <div class="row  center-align">
+                                <button ng-click="getTitle()" class="btn waves-effect waves-light" type="submit" name="action" style="width: 80%;">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <!--  Scripts-->
+  <!-- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  
+  <script src="js/angular.js"></script>
+  <script src="js/pagination.js"></script>
+  <script>
+    const myApp = angular.module('myApp', ['angularUtils.directives.dirPagination'])
+
+    const cont = myApp.controller('cont',['$scope', '$filter', function ($scope, $filter){
+        $scope.name = ""
+
+        $scope.getTitle = function(){
+            // alert($scope.name)
+            let new_task = {'id': 1, 'title': $scope.name, 'reward': 300, 'date_posted': '21/2/2023', 'required': 30000, 'done': 10000}
+
+             $scope.tasks.push(new_task)
+            M.toast({html: 'Task created!'})
+            // console.log(name)
+        }
+
+        $scope.pageSize = 5;
+        $scope.tasks = [
+            {'id': 1, 'title': 'Intagram like', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 2, 'title': 'Instagram comment', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 3, 'title': 'Facebook like', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 4, 'title': 'Facebook follow', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 5, 'title': 'Twitter followe', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 6, 'title': 'Youtube subscribe', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 7, 'title': 'Website review', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000},
+            {'id': 8, 'title': 'Product review', 'reward': 200, 'date_posted': '20/2/2023', 'required': 10000, 'done': 2000}
+        ];
+        $scope.changeHandler = function (newPage) { };
+
+        $scope.deleteTask = function(id){
+            console.log(id)
+            $scope.tasks  = $scope.tasks.filter(task => task.id !== id)
+            M.toast({html: 'Task '+id+' deleted!'})
+        }
+    }])
+
+    
+
+  </script>
+  </body>
+</html>

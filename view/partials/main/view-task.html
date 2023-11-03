@@ -1,0 +1,87 @@
+
+<div class="section">
+    <div class="row">
+        <!--   Job listing Section starts   -->
+        <div class="col s12 m8 ">
+
+            <div class="container">
+                <div class="card hoverable">
+                    <div class="container pt-10">
+                        <div class="row">
+                            <div class="col l6">
+                                <div class="row">
+                                    <h3>Task Details</h3>
+                                </div>
+                                <div class="row">
+                                    <p class="task-description">{{task.description}}</p>
+                
+                                    <div class="cancel-payment black-text left">
+                                        <div class="left" style="transform: rotate(180deg) !important">
+                                            <i class="material-icons" style="transform: rotate(180)">play_arrow</i>
+                                        </div>
+                                        <div class="left pt-6">
+                                            <span><a href="#!/" class="black-text" style="cursor: pointer"> Back to Tasks</a></span>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <br><br><br><br>
+                                </div>
+                            </div>
+
+                            <div class="col l6">
+                                <div class="card">
+                                    <div class="row">
+                                        <ul style="margin-top: 40px; padding: 10%">
+                                            <li>
+                                                <span>Task Title: </span>  <span class="cyan-text"> {{task.title}}</span>
+                                            </li>
+                
+                                            <!-- <li>
+                                                <span>Category: </span>  <span class="cyan-text"> My task Category</span>
+                                            </li> -->
+                
+                                            <li>
+                                                <span>Number of Freelancers Needed: </span>  <span class="cyan-text">{{task.total_need}}</span>
+                                            </li>
+                
+                                            <li>
+                                                <span>Reward per task: </span>  <span class="cyan-text">{{task.reward}}</span>
+                                            </li>
+                
+                                            <li>
+                                                <span>Task Link: </span>  <span class="cyan-text" style="cursor: pointer" ng-click="showProofArea()"><a href="{{task.link}}" target="_blank"> {{task.link}}</a></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="center-align">
+                                        <div class="row">
+                                            <a class="waves-effect waves-light btn" ng-show="shouldShowProofArea" ng-click="openFile()"><i class="material-icons left">cloud</i><span id="uploadButton">Upload Proof</span></a>
+                                            <input type="file" name="" id="proof" ng-show="{{false}}" ng-model="proof1" onchange="getProof()">
+                                            <img style="max-width: 200px; max-height: 300px;" id="imagePreview">
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <a class="waves-effect waves-light btn" id="submit" ng-click="submitProof()" style="display: none"><i class="material-icons left">send</i>submit</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <sidebar-dashboard></sidebar-dashboard>
+
+
+    </div>
+    <br><br>
+</div>

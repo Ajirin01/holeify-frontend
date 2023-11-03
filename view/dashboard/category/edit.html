@@ -1,0 +1,51 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-category.html'"></div> -->
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h5 class="left">Edit Category</h5>
+        </div>
+
+        <div class="container">
+            <form action="" >
+                <br>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="name" type="text" value="{{category.name}}" class="validate">
+                        <label for="name">Category Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="description" class="materialize-textarea">{{category.description}}</textarea>
+                        <label for="textarea1">Description (optional)</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="minReward" type="number" value="{{(category.reward_range | parseJSON)[0]}}" class="validate">
+                        <label for="minReward">Minimum Reward Range</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="maxReward" ng-model="maxReward" type="number" value="{{(category.reward_range | parseJSON)[1]}}" class="validate">
+                        <label for="maxReward">Maximum Reward Range</label>
+                    </div>
+                </div>
+
+                <div class="row center-align">
+                    <a class="btn waves-effect waves-light" ng-click="updateCategory()">Submit
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
+            </form>
+        
+        </div>
+
+
+    </div>
+</div>
+
+<dashboard-footer></dashboard-footer>

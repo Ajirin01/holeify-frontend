@@ -1,0 +1,95 @@
+
+    <div class="container">
+        <div class="card hoverable">
+            <div class="container pt-10">
+                <div class="row">
+                    <h3>Post a Task</h3>
+                </div>
+                <div class="row">
+                    <form action="">
+                        <div class="row remove-row-margin">
+                          <!-- {{task_types = (category | parseJSON).task_types}} -->
+                          <div class="input-field col s12 m6">
+                            <input type="hidden" name="" id="category" value="{{category | stringifyJSON}}">
+
+                              <select ng-model="category" ng-change="getTitles()" ng-options="category.name for category in categories">
+                              <!-- <select id="category" ng-model="category" ng-change="getTitles()"> -->
+
+                                <option value="" disabled selected>Please Choose Task Category</option>
+                                <!-- <option ng-repeat="category in categories" value="{{category}}">{{category.name}}</option> -->
+                              </select>
+                              
+                              <label>Select Task Category</label>
+                          </div>
+
+                            <div ng-if="category.name === 'Custom Task'" class="input-field col s12 m6">
+                                <input placeholder="Example: Website Survey" id="title" type="text" class="validate">
+                                <label for="title">Task Title</label>
+                            </div>
+                            
+
+                            <div ng-if="category.name !== 'Custom Task' && category !== null" class="input-field col s12 m6">
+                                <input type="hidden" name="" id="title" value="{{title | stringifyJSON}}">
+
+                                <select ng-model="title" ng-options="task_types.title for task_types in category.task_types">
+                                <!-- <select id="title" ng-model="title"> -->
+
+                                  <option value="" disabled selected>Please Choose Type(Title)</option>
+                                  <!-- <option ng-repeat="task_type in category.task_types" value="{{task_type.title}}">{{task_type.title}}</option> -->
+                                </select>
+                                <label>Select Task Type</label>
+                            </div>
+                              
+                            
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <textarea ng-model="description" id="description" class="materialize-textarea"></textarea>
+                              <label for="textarea1">Task Description</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="input-field col s6">
+                            <input ng-model="total_needed" type="number" min="10" name="total_needed" id="total_needed">
+                            <label for="total_needed">Number of Freelancers Needed</label>
+                          </div>
+
+                          <div class="input-field col s6">
+                            <label for="reward" class="left">Reward per task</label>
+                            <span class="right">
+                              <i >&#x20a6;</i>  <i>{{reward}}</i>
+                            </span>
+                            <p class="range-field pt-10">
+                              <!-- {{category.reward_range | parseJSON | parsedJSONIndex0}} {{category.reward_range | parseJSON | parsedJSONIndex1}} -->
+                              <input ng-model="reward" type="range" id="reward" step="5" min="{{(category.reward_range | parseJSON)[0]}}" max="{{(category.reward_range | parseJSON)[1]}}" />
+                            </p>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="input-field col s12">
+                            <input ng-model="link" type="text" id="task_link">
+                            <label for="task_link">Task Link</label>
+                          </div>
+                        </div>
+
+                        <div class="row center-align">
+                          <a ng-click="submitAddTask()" class="waves-effect waves-light btn" style="width: 80%;">Continue</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a ui-sref="billing" id="go-to-summary" style="display: none">Continue</a>
+
+    <br><br>
+<!-- <script>
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
+    
+</script> -->

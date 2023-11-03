@@ -1,0 +1,46 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-category.html'"></div> -->
+
+<div class="container">
+    <div class="row">
+        <div>
+            <h5 class="left">Add Task Type</h5>
+        </div>
+
+        <div class="container">
+            <form action="" >
+                <br>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="name" ng-model="title" type="text" class="validate">
+                        <label for="name">Task title</label>
+                    </div>
+                </div>
+
+                <div class="input-field col s12 m6">
+                    <input type="hidden" ng-model="category" name="" id="category" value="{{category | stringifyJSON}}">
+
+                    <select ng-model="category" ng-change="getTitles()" ng-options="category.name for category in categories">
+                    <!-- <select id="category" ng-model="category" ng-change="getTitles()"> -->
+
+                    <option value="" disabled selected>Please Choose Task Category</option>
+                    <!-- <option ng-repeat="category in categories" value="{{category}}">{{category.name}}</option> -->
+                    </select>
+                    
+                    <label>Select Task Category</label>
+                </div>
+
+                <div class="row center-align">
+                    <a class="btn waves-effect waves-light" ng-click="addTaskType()">Submit
+                        <i class="material-icons right">send</i>
+                    </a>
+                </div>
+            </form>
+        
+        </div>
+
+
+    </div>
+</div>
+
+<dashboard-footer></dashboard-footer>

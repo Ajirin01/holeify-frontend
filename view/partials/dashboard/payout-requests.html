@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- <meta http-equiv="Content-Type" content="charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>View profile</title> -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payout Requests</title>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <style>
+    body{
+        background-color: rgba(153, 153, 152, 0.041);
+    }
+  </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div>
+                <h5 class="left">Payout Requests</h5>
+            </div>
+
+            <div>
+                <table class="responsive-table">
+                    <thead>
+                      <tr>
+                          <th>User</th>
+                          <th>Amount</th>
+                          <th>Date Requested</th>
+                          <th>Date Completed</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                      </tr>
+                    </thead>
+            
+                    <tbody>
+                      <tr>
+                        <td>Olagoke Mubarak</td>
+                        <td>$0.87</td>
+                        <td>20/2/2023</td>
+                        <td>-</td>
+                        <td>pending</td>
+                        <td>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="#!">Pending</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Processing</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Approved</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Declined</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#!">Finished</a></li>
+                                
+                            </ul>
+                            <a class="dropdown-trigger" href="#!" data-target="dropdown1" class="orange-text"><i class="material-icons">edit</i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    $(document).ready(function(){
+        
+        $(".dropdown-trigger").dropdown();
+    })
+  </script>
+  </body>
+</html>

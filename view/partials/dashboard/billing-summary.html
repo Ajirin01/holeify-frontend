@@ -1,0 +1,66 @@
+
+<div class="container">
+    <div class="card hoverable">
+        <div class="container pt-10">
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <div ng-include="'view/partials/dashboard/payment.html'"></div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <h3>Task Summary</h3>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <ul>
+                        <li>
+                            <span>Task Title: </span>  <span class="cyan-text"> {{task_title.title}}</span>
+                        </li>
+
+                        <li>
+                            <span>Category: </span>  <span class="cyan-text"> {{task_category.name}}</span>
+                        </li>
+
+                        <li>
+                            <span>Number of Freelancers Needed: </span>  <span class="cyan-text">{{task_total_need}}</span>
+                        </li>
+
+                        <li>
+                            <span>Reward per task: </span>  <span class="cyan-text">{{task_reward}}</span>
+                        </li>
+
+                        <li>
+                            <span>Task Link: </span>  <span class="cyan-text">{{task_link}}</span>
+                        </li>
+                    </ul>
+
+                    <div>
+                        <h6>Billing Summary</h6>
+                            <span><i class="material-icons left">payment</i> Pay: </span>
+                            <span class="cyan-text">
+                              <i >&#x20a6;</i>  <i>{{total_payable}}</i>
+                            </span>
+                    </div>
+
+                    <div style="margin: 30px 0;">
+                        <!-- Modal Trigger -->
+                        <!-- <button data-target="modal1" class="btn modal-trigger">Continue</button> -->
+                        <button ng-click="checkout()" id="pay-button" ng-class="disabled" class="waves-effect waves-light btn">Continue</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+</script>
+
+

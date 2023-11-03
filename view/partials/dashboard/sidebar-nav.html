@@ -1,0 +1,42 @@
+<div id="slide-out" class="sidenav black white-text">
+    <div class="row remove-row-margin" id="slide-out" class="col s3 sidenav black white-text">
+        <div class="col s12 l12 m12 white black-text">
+            <div class="section" style="height: 60px">
+                <a ui-sref="dashboard"><h5 class="sidenav-close" style="margin-top: -5px ;"><i class="material-icons small">dashboard</i> DASHBOARD</h5></a>
+            </div>
+            <div class="divider"></div>
+        </div>
+        <div class="col s12 l12 m12">
+            <ul style="color: white !important">
+                <li>
+                    <div class="user-view" style="margin-top: -30px">
+                        <a href="#name"><span class="white-text name">{{auth.user().name}}</span></a>
+                        <a href="#email"><span class="white-text email">{{auth.user().email}}</span></a>
+                    </div>
+                </li>
+                
+                <li><div class="divider"></div></li>
+
+                <li ><a ui-sref="categories" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Categories</a></li>
+                <li ><a ui-sref="task-types" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Task Types</a></li>
+                <li ><a ui-sref="tasks" class="sidenav-close white-text"><i class="material-icons white-text">list</i>My Tasks</a></li>
+                <li ><a ui-sref="submittedTasks" class="sidenav-close white-text"><i class="material-icons white-text">assignment</i>Submitted Tasks</a></li>
+                <!-- <li ><a href="#!" class="sidenav-close white-text"><i class="material-icons white-text">check_box</i>Completed Tasks</a></li>
+                <li ><a href="#!" class="sidenav-close white-text"><i class="material-icons white-text">history</i>Payout History</a></li> -->
+                <li ><a ui-sref="wallet" class="sidenav-close white-text"><i class="material-icons white-text">wallet</i>Wallet</a></li>
+
+                <li ><a ui-sref="payableAccounts" class="sidenav-close white-text"><i class="material-icons white-text">user</i>Payable Accounts</a></li>
+            </ul>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    })
+</script>

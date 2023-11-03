@@ -1,0 +1,42 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-category.html'"></div> -->
+
+<div class="row">
+    <div>
+        <h5 class="left">Manage Categories</h5>
+
+        <a ui-sref="add-category" class="waves-effect waves-circle waves-light btn-floating secondary-content right">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+
+    <div>
+      <input ng-model="categoryTitle" id="search" class="form-control" placeholder="Filter text">
+        <table class="responsive-table">
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Reward Range</th>
+                  <th>Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr dir-paginate="category in categories | filter : categoryTitle | itemsPerPage: pageSize"
+                  pagination-id="flights">
+                    <td>{{category.name}}</td>
+                    <td>{{category.reward_range}}</td>
+                    <td>
+                        <a href="#!edit-category/{{category.id}}" class="orange-text"><i class="material-icons">edit</i></a>
+                        <a ng-if="category.name !== 'Custom Task'" href="" class="red-text" ng-click="deleteCategory(category.id)"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+    </div>
+
+
+</div>
+
+<dashboard-footer></dashboard-footer>

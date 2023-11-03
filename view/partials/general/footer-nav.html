@@ -1,0 +1,14 @@
+<div class="row grey lighten-2" style="position: fixed; top: 100vh; width: 100%; height: 50px; margin-top: -50px; z-index: 1000">
+    <div class="col s4 center-align" style="padding-top: 10px ;">
+        <a ui-sref="dashboard" class="black-text"><i class="material-icons">dashboard</i></a>
+    </div>
+    <div class="col s4 center-align" style="padding-top: 10px ;">
+        <a ui-sref="home" class="black-text">
+            <i class="material-icons">home</i>
+            <span ng-show="newTasks.length > 0" ng-click="refresh()" style="margin-left: -100px" class="new badge">{{ newTasks.length }}</span>
+        </a>
+    </div>
+    <div class="col s4 center-align" style="padding-top: 10px ;">
+        <a ui-sref="profile" class="black-text"><i class="material-icons">account_circle</i></a>
+    </div>
+</div>

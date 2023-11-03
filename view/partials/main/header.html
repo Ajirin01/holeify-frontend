@@ -1,0 +1,47 @@
+<div ng-app="mainModule">
+    <nav class="black" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" ui-sref="home" class="brand-logo">Holeify.<small style="font-size: .8rem;">com</small></a>
+        <ul class="right hide-on-med-and-down">
+            <li ng-show="newTasks.length > 0" ng-click="refresh()"><a href="#" class="cyan-text left">Tasks</a><span style="margin-top: 5px; margin-left: -10px" class="new badge left">{{ newTasks.length }}</span></li>
+            <li><a ui-sref="add-task" class="cyan-text">Post a Job</a></li>
+            <li><a ui-sref="dashboard" class="cyan-text" onmouseover="this.class='cyan-text lighten-5'">Dashboard</a></li>
+            <!-- <li><a href="#!" class="cyan-text" ng-click="logout()">Logout</a></li> -->
+            <!-- {{auth.isAuthenticated()}} -->
+            <li ng-show="auth.isAuthenticated()"><a class="cyan-text" href="#!" ng-click="auth.logout()">Logout</a></li>
+            <li ng-show="!auth.isAuthenticated()"><a class="cyan-text" ui-sref="login" >Login</a></li>
+
+            <!-- <li class="switch">
+                <label>
+                    <span class="cyan-text">Work</span>
+                  
+                    <input type="checkbox">
+                    <span class="lever"></span>
+
+                    <span class="cyan-text">Request</span>
+                </label>
+            </li> -->
+
+            <!-- {{auth.user()}} -->
+        </ul>
+
+        <ul id="nav-mobile" class="sidenav">
+            <li><a ui-sref="add-task" class="sidenav-close">Post a Job</a></li>
+            <li><a ui-sref="dashboard" class="sidenav-close">Dashboard</a></li>
+            <li ng-show="auth.isAuthenticated()"><a href="#!" class="sidenav-close" ng-click="auth.logout()">Logout</a></li>
+            <li ng-show="!auth.isAuthenticated()"><a class="sidenav-close" ui-sref="login" >Login</a></li>
+            <!-- {{user}} -->
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+    <!-- <div style="size: 80%; margin: 0 auto"> -->
+
+
+<script>
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    })
+</script>
