@@ -179,7 +179,7 @@ myApp.controller('appController', function($scope, $rootScope, $http, $sessionSt
             
             var pending = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(pending);
     
-            $scope.pending = pending
+            $rootScope.pending = pending
     
         })
     
@@ -198,7 +198,7 @@ myApp.controller('appController', function($scope, $rootScope, $http, $sessionSt
             
             var balance = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(balance);
     
-            $scope.balance = balance
+            $rootScope.balance = balance
     
         })
     }

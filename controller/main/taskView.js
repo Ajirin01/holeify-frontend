@@ -45,6 +45,26 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
             console.log(response.data);
             // $scope.submittedTasks  = response.data
             M.toast({html: "Task submitted and awaiting Requester's approval!"})
+
+            $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id}, config).
+            then(response=> {
+                let submitted_tasks = response.data
+                // console.log(submitted_tasks)
+        
+                var pending = 0
+        
+                submitted_tasks.forEach(task => {
+                    if(task.status === "pending"){
+                        pending = pending + Number(task.reward)
+                    }
+                });
+        
+                
+                var pending = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(pending);
+        
+                $rootScope.pending = pending
+        
+            })
         }, function(error) {
             // Error callback
             console.error(error);
