@@ -41,43 +41,19 @@ myApp.controller('appController', function($scope, $rootScope, $http, $sessionSt
         }
     };
 
-    $http.get(CONFIG.BASE_URL.API + '/tasks', {}, config)
-    .then(function(response) {
-        // Success callback
-        console.log(response.data);
-        $rootScope.tasks = response.data
-    }, function(error) {
-        // Error callback
-        console.error(error);
-    })
-
-    $rootScope.newTasks = [];
-
-    // subscribe to the 'tasks' channel and listen for 'task-added' events
-    PusherService.subscribe('tasks', 'task-added', function(data) {
-        // add the new task to the $rootScope
-        $rootScope.tasks.push(data);
-
-        // add the new task to the $rootScope.newTasks array
-        $rootScope.newTasks.push(data);
-        
-        // trigger a digest cycle to update the view
-        $rootScope.$apply();
-    });
-
     
 
     // add a function to refresh the page and clear the newTasks array
     $rootScope.refresh = function() {
         // clear the newTasks array
-        $rootScope.newTasks = [];
+        $rootScope.newActiveTasks = [];
         
         // reload the current route to fetch all tasks from the server
         $state.go('home')
     };
 
 
-    // get the total balance and check if account details exist for user when the user is worker
+    // // get the total balance and check if account details exist for user when the user is worker
     if(authService.isAuthenticated() ){
         $http.post(CONFIG.BASE_URL.API + '/check-account-detail-exist', {worker_id: authService.user().id}, config).
         then(response=> {
@@ -162,46 +138,6 @@ myApp.controller('appController', function($scope, $rootScope, $http, $sessionSt
 
     }
 
-    if(authService.isAuthenticated()){
-        $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id}, config).
-        then(response=> {
-            let submitted_tasks = response.data
-            // console.log(submitted_tasks)
-    
-            var pending = 0
-    
-            submitted_tasks.forEach(task => {
-                if(task.status === "pending"){
-                    pending = pending + Number(task.reward)
-                }
-            });
-    
-            
-            var pending = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(pending);
-    
-            $rootScope.pending = pending
-    
-        })
-    
-        $http.post(CONFIG.BASE_URL.API + '/get-done-tasks', {worker_id: authService.user().worker.id,  paid: false}, config).
-        then(response=> {
-            let done_tasks = response.data
-            // console.log(done_tasks)
-    
-            var balance = 0
-            
-            done_tasks.forEach(task => {
-                if(!task.paid){
-                    balance = balance + Number(task.earning)
-                }
-            });
-            
-            var balance = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(balance);
-    
-            $rootScope.balance = balance
-    
-        })
-    }
 
   })
 

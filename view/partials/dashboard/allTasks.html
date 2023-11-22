@@ -1,0 +1,64 @@
+<dashboard-header></dashboard-header>
+<!-- <div ng-include="'view/partials/dashboard/add-allTask.html'"></div> -->
+
+<div class="row">
+    <div>
+        <h5 class="left">Manage All Tasks</h5>
+    </div>
+
+    <div>
+      <input ng-model="allTaskTitle" id="search" class="form-control" placeholder="Filter text">
+        <table class="responsive-table">
+            <thead>
+              <tr>
+                  <th>Select all 
+                    <input type="checkbox" id="selectAll" ng-model="selectAllTasks" ng-change="toggleCheckAll()">
+                      <ul id="select-dropdown" class="dropdown-content">
+                          <li><a href="#!" ng-click="updateStatus('approved')">approve</a></li>
+
+                          <li class="divider"></li>
+                          <li><a href="#!" ng-click="updateStatus('declined')">decline</a></li>
+                      </ul>
+                      <a href="#!" data-target="select-dropdown" class="dropdown-trigger btn waves-effect waves-light">Select Action</a>
+                      <!-- <i class="material-icons">settings</i> -->
+                  </th>
+                  <th>Name</th>
+                  <!-- <th>Reward</th> -->
+                  <th>Status</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr dir-paginate="allTask in allTasks | filter : allTaskTitle | itemsPerPage: pageSize"
+                  pagination-id="flights">
+                  <!-- {{allTask}} -->
+                    <td><input type="checkbox" class="checkbox" id="check{{allTask.id}}" value="{{allTask.id}}"></td>
+                    <td>{{allTask.title}}</td>
+                    <!-- <td>{{allTask.reward}}</td> -->
+                    <td>{{allTask.status}}</td>
+                </tr>
+            </tbody>
+          </table>
+          <dir-pagination-controls boundary-links="true" on-page-change="changeHandler(newPageNumber)" pagination-id="flights"></dir-pagination-controls>
+    </div>
+</div>
+
+<style>
+  [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.5) translateY(3px);
+}
+</style>
+
+<dashboard-footer></dashboard-footer>
+
+<script>
+  // Initialize Materialize components
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+
+  
+</script>

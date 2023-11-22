@@ -17,15 +17,16 @@
                 
                 <li><div class="divider"></div></li>
 
-                <li ><a ui-sref="categories" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Categories</a></li>
-                <li ><a ui-sref="task-types" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Task Types</a></li>
+                <li ng-if="auth.user().role === 'admin'"><a ui-sref="categories" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Categories</a></li>
+                <li ng-if="auth.user().role === 'admin'"><a ui-sref="task-types" class="sidenav-close white-text"><i class="material-icons white-text">list</i>Task Types</a></li>
                 <li ><a ui-sref="tasks" class="sidenav-close white-text"><i class="material-icons white-text">list</i>My Tasks</a></li>
+                <li ng-if="auth.user().role === 'admin'" ><a ui-sref="allTasks" class="sidenav-close white-text"><i class="material-icons white-text">list</i>All Tasks</a></li>
                 <li ><a ui-sref="submittedTasks" class="sidenav-close white-text"><i class="material-icons white-text">assignment</i>Submitted Tasks</a></li>
                 <!-- <li ><a href="#!" class="sidenav-close white-text"><i class="material-icons white-text">check_box</i>Completed Tasks</a></li>
                 <li ><a href="#!" class="sidenav-close white-text"><i class="material-icons white-text">history</i>Payout History</a></li> -->
                 <li ><a ui-sref="wallet" class="sidenav-close white-text"><i class="material-icons white-text">wallet</i>Wallet</a></li>
 
-                <li ><a ui-sref="payableAccounts" class="sidenav-close white-text"><i class="material-icons white-text">user</i>Payable Accounts</a></li>
+                <li ng-if="auth.user().role === 'admin'"><a ui-sref="payableAccounts" class="sidenav-close white-text"><i class="material-icons white-text">user</i>Payable Accounts</a></li>
             </ul>
             
             

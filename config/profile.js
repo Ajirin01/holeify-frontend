@@ -3,6 +3,7 @@ myApp.config(function($stateProvider) {
         name: 'profile',
         url: '/profile',
         controller: profileController,
+        requiresAuthentication: true,
         templateUrl: 'view/profile.html'
     }
 

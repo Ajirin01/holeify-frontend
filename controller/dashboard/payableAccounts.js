@@ -1,4 +1,4 @@
-controllers.payableAccounts.index = function($scope, $http, $filter, CONFIG, authService){
+controllers.payableAccounts.index = function($scope, $http, $filter, CONFIG, authService, $rootScope){
     $scope.page_title = "Payable Accounts"
 
     var config = {
@@ -83,6 +83,7 @@ controllers.payableAccounts.index = function($scope, $http, $filter, CONFIG, aut
     }
 
     $scope.processPayout = function(){
+        $rootScope.loading = true
         event.preventDefault()
         var checkboxes = document.getElementsByClassName('checkbox');
         var submitted_task_worker_ids_pairs = []
@@ -105,7 +106,26 @@ controllers.payableAccounts.index = function($scope, $http, $filter, CONFIG, aut
             // Success callback
             console.log(response.data);
             // $scope.payableAccounts  = response.data
-            M.toast({html: 'Withdrawals are being processed'})
+            // Check if the CSV path is present in the response
+            if (response.data.csv_path) {
+                // Create a hidden link with the CSV path
+                var downloadLink = document.createElement('a');
+                downloadLink.href = "http://localhost:8000/"+ response.data.csv_path;
+                // downloadLink.download = `'withdrawals.csv${(new Date()).toString()}'`;
+
+                // Append the link to the document
+                document.body.appendChild(downloadLink);
+
+                // Trigger a click on the link to start the download
+                downloadLink.click();
+
+                // Remove the link from the document
+                document.body.removeChild(downloadLink);
+
+                M.toast({html: 'Withdrawals list downloaded for you'})
+            }
+           
+            $rootScope.loading = false
         }, function(error) {
             // Error callback
             console.error(error);
@@ -129,12 +149,5 @@ controllers.payableAccounts.index = function($scope, $http, $filter, CONFIG, aut
         })   
 
         // console.log(submitted_withdrawal_ids)
-    }
-
-    $scope.openModal = function(id, title, url){
-        $scope.task_title = title
-        $scope.photo_proof = url
-        $scope.withdrawal_id = id
-        console.log(id, title, url)
     }
 }

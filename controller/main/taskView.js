@@ -22,9 +22,10 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
     }
 
     $scope.submitProof = function() {
+        $rootScope.loading = true
        var proof = document.getElementById("imagePreview").src
 
-       let task = getTask($rootScope.tasks, $stateParams.task_id)
+       let task = getTask($rootScope.activeTasks, $stateParams.task_id)
 
        console.log(task)
 
@@ -63,7 +64,9 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
                 var pending = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(pending);
         
                 $rootScope.pending = pending
-        
+                $rootScope.loading = false
+
+                window.location = "#!/"
             })
         }, function(error) {
             // Error callback
@@ -72,14 +75,14 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
 
     }
 
-    if($rootScope.tasks == undefined){
+    if($rootScope.activeTasks == undefined){
         $scope.$watch('tasks', function(newValue, oldValue) {
             if (newValue !== oldValue) {
                 // console.log('The value of myHiddenInput has changed:', newValue);
                 
                 $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id, task_id: $stateParams.task_id}, config).
                 then(response=> {
-                    $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+                    $scope.task = getTask($rootScope.activeTasks, $stateParams.task_id)
 
                     let submitted_tasks = response.data
                     $scope.userHasDoneTask = true ? submitted_tasks.length > 0 : false
@@ -92,7 +95,7 @@ const taskViewController = function ($scope, $stateParams, $rootScope, $http, au
 
         $http.post(CONFIG.BASE_URL.API + '/get-submitted-tasks', {worker_id: authService.user().worker.id, task_id: $stateParams.task_id}, config).
         then(response=> {
-            $scope.task = getTask($rootScope.tasks, $stateParams.task_id)
+            $scope.task = getTask($rootScope.activeTasks, $stateParams.task_id)
 
 
             let submitted_tasks = response.data

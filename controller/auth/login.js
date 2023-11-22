@@ -2,6 +2,7 @@ const loginController = function($scope, $rootScope, $http, CONFIG, $sessionStor
     $rootScope.user = {}
 
     $scope.login = function(){
+        $rootScope.loading = true
         let email = document.getElementById("email").value
         let password = document.getElementById("password").value
 
@@ -28,6 +29,7 @@ const loginController = function($scope, $rootScope, $http, CONFIG, $sessionStor
                     $sessionStorage.user = response.data.user
 
                     // console.log(response)
+                    $rootScope.loading = false
                     
                     window.location = "#!/dashboard"
                 }
@@ -36,6 +38,7 @@ const loginController = function($scope, $rootScope, $http, CONFIG, $sessionStor
                 // Error callback
                 if(error.status == 401){
                     M.toast({html: "Invalid login credentials, please check and login in again or register if you're new!"})
+                    $rootScope.loading = false
                 }
             });
     }

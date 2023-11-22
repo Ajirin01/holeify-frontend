@@ -10,6 +10,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
         name: 'task-details',
         url: '/task-details/:task_id',
         controller: taskViewController,
+        requiresAuthentication: true,
         templateUrl: 'view/view-task.html'
     }
 
